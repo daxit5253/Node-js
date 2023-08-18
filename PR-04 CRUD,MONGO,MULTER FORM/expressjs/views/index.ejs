@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+
+<body style="background-color: grey;">
+
+    <div class="bg-black text-light m-auto mt-5 border-5 border-top border-bottom border-primary rounded-5 pb-5 pt-5" style="width: 60%;">
+
+        <!-- <h2 class="text-center p-4 pt-5">My Todos</h2> -->
+
+    <form action="/savedata" class="w-50 pt-5 m-auto border-4 border-bottom border-top border-danger rounded-4 pb-4 bg-dark" method="post" enctype="multipart/form-data">
+
+        <input type="hidden" name="id" value="<%= edituser.id%>">
+
+        <div class="align-items-center m-auto">
+            <div>
+
+                <div class="d-flex align-items-center justify-content-center mt-3">
+                    <label for="" class="form-label me-4 fs-5">Name</label>
+                    <input class="form-control-sm w-50 rounded-end-5 fs-6" type="text" name="name" value="<%= edituser.name%>"><br><br>
+                </div>
+
+                <div class="d-flex align-items-center justify-content-center mt-3">
+                    <label for="" class="form-label me-4 fs-5">Email</label>
+                    <input class="form-control-sm w-50 rounded-end-5 fs-6 me-3" type="email" name="email" value="<%= edituser.email%>"><br><br>
+                </div>
+
+                <div class="d-flex align-items-center justify-content-center mt-3">
+                    <label for="" class="form-label me-4 fs-5">Age</label>
+                    <input class="form-control w-50 rounded-end-5 fs-6 me-3" type="number" name="age" value="<%= edituser.age%>"><br><br>
+                </div>
+
+                <div class="d-flex align-items-center justify-content-center mt-3">
+                    <label for="" class="form-label me-4 fs-5">Image</label>
+                    <input class="form-control w-50 rounded-end-5 fs-6 me-3" type="file" name="image"><br><br>
+                </div>
+            </div>
+                    <div class="d-flex justify-content-center mt-5">
+                        <input type="submit" class="btn btn-outline-info " value="Submit">
+                    </div>
+        </div>
+    </form>
+
+    <br><br>
+
+    <table class="w-50 m-auto rounded-4 border rounded-4" cellspacing="10" cellpadding="25">
+
+
+        <tr class="border-3 border-top  border-primary">
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Image</th>
+            <th colspan="2">Action</th>
+        </tr>
+
+        <% data.forEach((item)=>{ %>
+
+            <tr align="center" class="border border-3">
+                <td>
+                    <%= item.id %>
+                </td>
+                <td>
+                    <%= item.name %>
+                </td>
+                <td>
+                    <%= item.email %>
+                </td>
+                <td>
+                    <%= item.age %>
+                </td>
+                <td>
+                    <img src="../<%= item.image %>" alt="User Image" height="60px" width="60px">
+                </td>
+                <td><a href="/edit/<%= item.id %>" class="btn btn-outline-success" style="text-decoration: none;">Edit</a></td>
+                <td><a href="/delete/<%= item.id %>" class="btn btn-outline-danger" style="text-decoration: none;">Delete</a></td>
+            </tr>
+
+            <%});%>
+
+    </table>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+
+</html>
