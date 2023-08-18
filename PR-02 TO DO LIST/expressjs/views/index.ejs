@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PR-02 TODO LIST</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body style="background-color: grey;">
+
+    <div class="bg-black text-light w-75 m-auto mt-5 border-1 rounded-5 pb-5">
+
+        <h2 class="text-center p-4 pt-5">My Todos</h2>
+
+    <form action="/savedata" method="post" class="form w-75 m-auto p-3 rounded-4 pb-4 bg-dark">
+
+        <input type="hidden" name="id" value="<%= edituser.id%>">
+
+            <div class=" d-flex align-items-center justify-content-around m-auto">
+                <div class="d-flex">
+                    <div>
+                        <label for="" class="form-label ms-2">Name</label> <br>
+                        <input type="text" class="form-control-sm rounded-4 fs-6 me-3" name="name" value="<%= edituser.name%>">
+                    </div>
+
+                    <div>
+                        <label for="" class="form-label ms-2">Description</label> <br>
+                        <input type="text" class="form-control-sm rounded-4 fs-6" name="disc" value="<%= edituser.disc%>">   
+                    </div>
+                </div>
+                
+                <div>
+                    <br>
+                    <input type="submit" value="Add Todo" class="rounded-4 text-light" style="background-color: #ff9902; padding: 8px 20px;">
+                </div>
+            </div>
+
+    </form>
+
+
+        <br><br>
+
+        <table class="w-75 m-auto rounded-4 border rounded-4" cellspacing="10" cellpadding="30">
+
+            <tr class="bg-primary">
+                <th>NO.</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+
+            <% data.forEach((item)=>{ %>
+
+                <tr>
+                    <td><%= item.id %></td>
+                    <td><%= item.name %></td>
+                    <td><%= item.disc %></td>
+                    <td><a href="delete/<%= item.id %>" class="btn btn-outline-danger" style="text-decoration: none;">Delete</a></td>
+                </tr>
+            
+            <%});%>
+
+        </table>
+
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
